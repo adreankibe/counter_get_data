@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('body-parser-xml')(bodyParser);
 app.use(
     bodyParser.xml({
-      limit: '5MB', // Reject payload bigger than 1 MB
+      limit: '150MB', // Reject payload bigger than 1 MB
       xmlParseOptions: {
         normalize: true, // Trim whitespace inside text nodes
         normalizeTags: true, // Transform tags to lowercase
