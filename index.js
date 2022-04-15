@@ -21,9 +21,9 @@ app.post('/api/heart_url',(req,res,body)=>{
     console.log(req.body);
     res.status(200).end();
 })
-// //app.post('/',(req,res)=>{
-//     console.log(req.body)
-// })
+app.post('/',(req,res)=>{
+    console.log(req.body)
+})
 app.listen(7050,()=>{
     console.log('running on port 7050')
 })
