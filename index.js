@@ -1,21 +1,22 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-
+var parser = require('xml2json');
 app.use(bodyParser.text({type:"*/*"}));
 
-app.post('/api/post_url',(req,res)=>{
-    console.log(req.body);
- 
+app.post('/api/PostUrl',(req,res)=>{
+    let xml = req.body;
+    let json = parser.toJson(xml)
+    console.log(json)
     res.status(200).end();
 })
-// app.post('/api/heart_url',(req,res,body)=>{
-//     console.log(req.body);
-//     res.status(200).end();
-// })
-// app.post('/',(req,res)=>{
-//     console.log(req.body)
-// })
-app.listen(7050,()=>{
-    console.log('running on port 7050')
+app.post('/api/HeartUrl',(req,res)=>{
+    let xml = req.body;
+    let json = parser.toJson(xml)
+    console.log(json)
+    res.status(200).end();
+})
+
+app.listen(8070,()=>{
+    console.log('running on port 8070')
 })
