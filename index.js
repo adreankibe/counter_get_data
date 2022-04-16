@@ -16,6 +16,7 @@ app.post('/api/PostUrl',(req,res)=>{
         date:json.RTMetrics.ReportData.Report.Date,
         count:json.RTMetrics.ReportData.Report.Object.Count
     }
+    console.log(data)
     post_url(data)
     res.status(200).end();
 })
