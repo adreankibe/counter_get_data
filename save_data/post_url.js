@@ -46,6 +46,8 @@ const post_url = (data) => {
             else if (Array.isArray(count) === false) {
                 data.count = report.count.concat([count]);
             }
+            data.week_no = week_no
+            data.year_month = year_month
             Report.update(query, { $set: data }, () => {
 
             })
