@@ -20,10 +20,10 @@ const update_event = (data) => {
     let total_entry = 0
     if (Array.isArray(count) === true) {
         var lastItem = count.pop();
-        total_entry += parseInt(lastItem.Enters)
+        total_entry = parseInt(lastItem.Enters)
     }
     else if (Array.isArray(count) === false) {
-        total_entry += parseInt(count.Enters)
+        total_entry = parseInt(count.Enters)
     }
 
 
