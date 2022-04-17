@@ -16,13 +16,12 @@ const post_url = (data) => {
             let data = {};
             data.device_id = device_id;
             data.date = date;
-            if(Array.isArray(count)=== true)
-            {
-                data.count = report.count.concat(count);  
+            if (Array.isArray(count) === true) {
+                var lastItem = count.pop();
+                data.count = report.count.concat([lastItem]);
             }
-            else if(Array.isArray(count)=== false)
-            {
-                data.count = report.count.concat([count]);  
+            else if (Array.isArray(count) === false) {
+                data.count = report.count.concat([count]);
             }
             Report.update(query, { $set: data }, () => {
 
@@ -32,16 +31,15 @@ const post_url = (data) => {
             let data = {};
             data.device_id = device_id;
             data.date = date;
-            if(Array.isArray(count)=== true)
-            {
-                data.count = count;
+            if (Array.isArray(count) === true) {
+                var lastItem = count.pop();
+                data.count = [lastItem];
             }
-            else if(Array.isArray(count)=== false)
-            {
-                data.count = [count];  
+            else if (Array.isArray(count) === false) {
+                data.count = [count];
             }
 
-            
+
             data.created_on = new Date()
             Report.save(data, () => {
 
