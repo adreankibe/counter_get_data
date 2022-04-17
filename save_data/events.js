@@ -33,7 +33,7 @@ const update_event = (data) => {
                 if (events.length > 0) {
                     events.map((x) => {
                         let query = {
-                            _id: mongojs.ObjectId(id)
+                            _id: mongojs.ObjectId(x._id)
                         }
                         let data = {};
                         data.total = (parseInt(x.total) + parseInt(total_entry))
