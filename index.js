@@ -18,7 +18,7 @@ app.post('/api/PostUrl',(req,res)=>{
     }
     console.log(data)
     post_url(data)
-    res.status(200).end();
+  
 })
 app.post('/api/HeartUrl',(req,res)=>{
     let xml = req.body;
@@ -28,10 +28,8 @@ app.post('/api/HeartUrl',(req,res)=>{
         device_id:json.Diags.DeviceId,
         properties:json.Diags.Properties
     }
-
-
     heart_url(data)
-    res.status(200).end();
+    
 })
 
 app.listen(8070,()=>{
