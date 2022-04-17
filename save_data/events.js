@@ -30,18 +30,18 @@ const update_event = (data) => {
 
     Outlet.findOne({ device_id: device_id }, (err, outlet) => {
         if (outlet) {
-            Event.find({ building_id: outlet.building_id, status: 'Active' }, (err, events) => {
-                if (events.length > 0) {
-                    events.map((x) => {
+            Event.findOne({ building_id: outlet.building_id, status: 'Active' }, (err, event) => {
+                if (event) {
+                    
                         let query = {
-                            _id: mongojs.ObjectId(x._id)
+                            _id: mongojs.ObjectId(event._id)
                         }
                         let data = {};
-                        data.total = (parseInt(x.total) + parseInt(total_entry))
+                        data.total = (parseInt(event.total) + parseInt(total_entry))
                         Event.update(query, { $set: data }, () => {
 
                         });
-                    })
+                    
                 }
             })
         }

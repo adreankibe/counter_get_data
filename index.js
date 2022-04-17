@@ -20,7 +20,7 @@ app.post('/api/PostUrl', (req, res) => {
     }
 
     // console.log(data)
-    save_event(data)
+    // save_event(data)
     post_url(data)
 
 })
