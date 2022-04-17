@@ -16,15 +16,16 @@ const update_event = (data) => {
     const device_id = data.device_id;
     const count = data.count;
 
- 
+
     let total_entry = 0
     if (Array.isArray(count) === true) {
         var lastItem = count.pop();
         total_entry = parseInt(lastItem.Enters)
     }
-    else if (Array.isArray(count) === false) {
+    if (Array.isArray(count) === false) {
         total_entry = parseInt(count.Enters)
     }
+
 
 
     Outlet.findOne({ device_id: device_id }, (err, outlet) => {
@@ -37,14 +38,14 @@ const update_event = (data) => {
                         }
                         let data = {};
                         data.total = (parseInt(x.total) + parseInt(total_entry))
-                        Event.update(query, { $set: data }, () => { });
+                        Event.update(query, { $set: data }, () => {
+
+                        });
                     })
                 }
             })
         }
     })
-
-
 
 }
 module.exports = update_event
