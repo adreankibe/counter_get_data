@@ -16,7 +16,7 @@ const post_url = (data) => {
             let data = {};
             data.device_id = device_id;
             data.date = date;
-            data.count = report.count.concat(count);
+            data.count = report.count.concat([count]);
             Report.update(query, { $set: data }, () => {
 
             })
