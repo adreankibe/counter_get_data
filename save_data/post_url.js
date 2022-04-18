@@ -42,9 +42,13 @@ const post_url = (data) => {
             data.date = today;
             if (Array.isArray(count) === true) {
                 var lastItem = count.pop();
+                lastitem.StartTime = time;
+                lastItem.EndTime = time
                 data.count = report.count.concat([lastItem]);
             }
             else if (Array.isArray(count) === false) {
+                count.StartTime = time;
+                count.EndTime = time
                 data.count = report.count.concat([count]);
             }
             data.week_no = week_no
@@ -59,9 +63,13 @@ const post_url = (data) => {
             data.date = today;
             if (Array.isArray(count) === true) {
                 var lastItem = count.pop();
+                lastitem.StartTime = time;
+                lastItem.EndTime = time
                 data.count = [lastItem];
             }
             else if (Array.isArray(count) === false) {
+                count.StartTime = time;
+                count.EndTime = time
                 data.count = [count];
             }
 
