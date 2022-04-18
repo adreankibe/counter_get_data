@@ -36,11 +36,7 @@ app.post('/api/HeartUrl', (req, res) => {
     heart_url(data)
 
 })
-// let currentdate = new Date("2022-04-23");
-// var oneJan = new Date(currentdate.getFullYear(), 0, 1);
-// var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
-// var week_no = Math.ceil((currentdate.getDay() + 1 + numberOfDays) / 7);
-// console.log(week_no);
+
 
 app.listen(8070, () => {
     console.log('running on port 8070')

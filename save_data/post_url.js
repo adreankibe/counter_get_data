@@ -42,7 +42,7 @@ const post_url = (data) => {
             data.date = today;
             if (Array.isArray(count) === true) {
                 var lastItem = count.pop();
-                lastitem.StartTime = time;
+                lastItem.StartTime = time;
                 lastItem.EndTime = time
                 data.count = report.count.concat([lastItem]);
             }
@@ -63,7 +63,7 @@ const post_url = (data) => {
             data.date = today;
             if (Array.isArray(count) === true) {
                 var lastItem = count.pop();
-                lastitem.StartTime = time;
+                lastItem.StartTime = time;
                 lastItem.EndTime = time
                 data.count = [lastItem];
             }
