@@ -32,7 +32,7 @@ const post_url = (data) => {
     const minute = addZero(currentdate.getMinutes())
     const time = hour + ":" + minute;
 
-    Report.findOne({ date: date, device_id: device_id }, (err, report) => {
+    Report.findOne({ date: today, device_id: device_id }, (err, report) => {
         if (report) {
             let query = {
                 _id: mongojs.ObjectId(report._id)
