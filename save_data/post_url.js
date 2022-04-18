@@ -7,7 +7,7 @@ function addZero(i) {
     }
     return i;
 }
-const save_events = require('./events')
+
 const post_url = (data) => {
     const db = mongojs('mongodb://localhost/mall_counter')
     const Report = db.collection('reports');
@@ -15,8 +15,7 @@ const post_url = (data) => {
     const device_id = data.device_id;
     const date = data.date;
     const count = data.count;
-    save_events(data)
-
+   
     let currentdate = new Date(date);
     var oneJan = new Date(currentdate.getFullYear(), 0, 1);
     var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
