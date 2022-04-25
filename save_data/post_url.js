@@ -62,8 +62,10 @@ const post_url = (data) => {
             data.device_id = device_id;
             data.date = today;
             if (Array.isArray(count) === true) {
-               
-                data.count = count;
+                var lastItem = count.pop();
+                lastItem.StartTime = time;
+                lastItem.EndTime = time
+                data.count = [lastItem];
             }
             else if (Array.isArray(count) === false) {
                 count.StartTime = time;
