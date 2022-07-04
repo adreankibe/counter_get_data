@@ -1,0 +1,33 @@
+{
+    "device_id": "2010012111120217",
+    "date": "2022-05-17",
+    "count": [
+        {
+            "StartTime": "15:36",
+            "EndTime": "15:36",
+            "UnixStartTime": "1652790960",
+            "Enters": "0",
+            "Exits": "0",
+            "Passings": "0",
+            "Returns": "3",
+            "Status": "0"
+        },
+        {
+            "StartTime": "15:37",
+            "EndTime": "15:37",
+            "UnixStartTime": "1652791020",
+            "Enters": "2",
+            "Exits": "0",
+            "Passings": "2",
+            "Returns": "1",
+            "Status": "0"
+        }
+    ],
+    "created_on": {
+        "$date": {
+            "$numberLong": "1652791001722"
+        }
+    },
+    "week_no": 20,
+    "year_month": "2022-05"
+}

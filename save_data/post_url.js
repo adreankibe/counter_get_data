@@ -8,18 +8,24 @@ function addZero(i) {
     return i;
 }
 
+const general_reports = require('../report_functions/general_reports')
+const target_reports = require('../report_functions/target_reports');
+
 const post_url = (data) => {
-    const db = mongojs('mongodb://localhost/mall_counter')
+    const db = mongojs('mongodb://localhost/TwoRivers_mall_counter')
     const Report = db.collection('reports');
+   
 
     const device_id = data.device_id;
     const date = data.date;
     const count = data.count;
    
+    // current day, current week, current month
     let currentdate = new Date();
     var oneJan = new Date(currentdate.getFullYear(), 0, 1);
     var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
     var week_no = Math.ceil((currentdate.getDay() + 1 + numberOfDays) / 7);
+
     const year = currentdate.getFullYear();
     const nm = currentdate.getMonth() + 1
     const day = ("0" + currentdate.getDate()).slice(-2);
@@ -32,54 +38,23 @@ const post_url = (data) => {
     const minute = addZero(currentdate.getMinutes())
     const time = hour + ":" + minute;
 
-    Report.findOne({ date: today, device_id: device_id }, (err, report) => {
-        if (report) {
-            let query = {
-                _id: mongojs.ObjectId(report._id)
-            };
-            let data = {};
-            data.device_id = device_id;
-            data.date = today;
-            if (Array.isArray(count) === true) {
-                var lastItem = count.pop();
-                lastItem.StartTime = time;
-                lastItem.EndTime = time
-                data.count = report.count.concat([lastItem]);
-            }
-            else if (Array.isArray(count) === false) {
-                count.StartTime = time;
-                count.EndTime = time
-                data.count = report.count.concat([count]);
-            }
-            data.week_no = week_no
-            data.year_month = year_month
-            Report.update(query, { $set: data }, () => {
 
-            })
+
+    Report.findOne({device_id:device_id,added_on:today},(err,report)=>{
+        if(report)
+        {
+            general_reports(data,report)
+            target_reports(data)
+            // targets function
+            // popular_days function
         }
-        else {
-            let data = {};
-            data.device_id = device_id;
-            data.date = today;
-            if (Array.isArray(count) === true) {
-                var lastItem = count.pop();
-                lastItem.StartTime = time;
-                lastItem.EndTime = time
-                data.count = [lastItem];
-            }
-            else if (Array.isArray(count) === false) {
-                count.StartTime = time;
-                count.EndTime = time
-                data.count = [count];
-            }
-
-
-            data.created_on = new Date()
-            data.week_no = week_no
-            data.year_month = year_month
-            Report.save(data, () => {
-
-            })
+        else
+        {
+            
+            general_reports(data,null)
+            target_reports(data)
+            // targets function
+            // popular_days function
 
         }
     })
